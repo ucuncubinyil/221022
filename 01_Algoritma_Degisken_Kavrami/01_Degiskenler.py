@@ -118,18 +118,39 @@ print( x1, x2 )
 # \n new line
 # \t TAB
 
+"""
+
 # Mehmet"in adresi neresi ?
 print("Mehmet\"in adresi neresi ?")
 print("Mehmet'in adresi neresi ?")
 print("Mehmet\nNuri\nÖztürk")
 print("Mehmet\tNuri\tÖztürk")
 
-adi, soyadi, maasi, araba_durumu = "Mehmet Nuri", "Öztürk", 36565.30, True
+# adi, soyadi, maasi, araba_durumu = "Mehmet Nuri", "Öztürk", 36565.30, True
+# bilgiler = f"""
+# AD          :{adi}
+# SOYAD       :{soyadi}
+# MAAŞ        :{maasi} ₺
+# ARABA       :{araba_durumu}
+# """
+# print(bilgiler)
 
-bilgiler = f"""
-AD          :{adi}
-SOYAD       :{soyadi}
-MAAŞ        :{maasi} ₺
-ARABA       :{araba_durumu}
+
+# KULLANICI ETKİLEŞİMİ
 """
-print(bilgiler)
+ad = input( "Adınız " )  # Tüm verileri string tipinde alır
+soyad = input( "Soyadınız " )
+yas = int( input( "Yaşınız " ) )
+maas = float( input( "Maaşınız " ) )
+
+bilgiler = f"Ad: {ad} Soyad: {soyad} Yaş: {yas} Maaş {maas}"
+print( bilgiler )
+"""
+
+# UTF - 8
+
+harf =  chr(126)
+print(harf)
+
+sira =  ord("~")
+print(sira)
