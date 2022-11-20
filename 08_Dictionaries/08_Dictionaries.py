@@ -107,56 +107,146 @@ car3 = dict(car) # ram adresini kopyalar
 print(car3)
 
 """
-
+"""
 myfamily = {
-  "child1" : {
-    "name" : "Emil",
-    "year" : 2004
-  },
-  "child2" : {
-    "name" : "Tobias",
-    "year" : 2007
-  },
-  "child3" : {
-    "name" : "Linus",
-    "year" : 2011
-  }
+    "child1": {
+        "name": "Emil",
+        "year": 2004
+    },
+    "child2": {
+        "name": "Tobias",
+        "year": 2007
+    },
+    "child3": {
+        "name": "Linus",
+        "year": 2011
+    }
 }
-
 
 child1 = {
-  "name" : "Emil",
-  "year" : 2004
+    "name": "Emil",
+    "year": 2004
 }
 child2 = {
-  "name" : "Tobias",
-  "year" : 2007
+    "name": "Tobias",
+    "year": 2007
 }
 child3 = {
-  "name" : "Linus",
-  "year" : 2011
+    "name": "Linus",
+    "year": 2011
 }
 
 myfamily2 = {
-  "child1" : child1,
-  "child2" : child2,
-  "child3" : child3
+    "child1": child1,
+    "child2": child2,
+    "child3": child3
 }
 
 print(myfamily)
 print(myfamily2)
 
+print(myfamily["child1"]["name"])  # çok boyutlu liste !!!
 
-print(myfamily["child1"]["name"]) # çok boyutlu liste !!!
+list1 = [1, 2, 3, 4, 5]
+list2 = [6, 7, 8, 9, 0]
+list3 = [11, 22, 33]
 
-list1 = [ 1, 2, 3, 4, 5 ]
-list2 = [ 6, 7, 8, 9, 0 ]
-list3 = [ 11, 22, 33 ]
-
-sozluk = { "x": list1, "y": list2, "z": list3 }
+sozluk = {"x": list1, "y": list2, "z": list3}
 
 print(sozluk)
 print(sozluk["x"][0])
 
 sozluk["x"][0] = 15
 print(sozluk["x"][0])
+"""
+
+#### SORU: Kullanıcıdan alınan ad,soyad,yas,cinsiyet
+# bilgilerini Personel isimli bir sözlükte saklayın ve
+# ad soyad bilgisini sözlükten alarak ekrana yazdırınız.
+"""
+
+personel = dict()
+
+ad = input("Adınız: ")
+soyad = input("Soyadınız: ")
+yas = int(input("Yaşınız: "))
+cinsiyet = input("Cinsiyetiniz: ")
+
+personel.update({"ad": ad})
+personel.update({"soyad": soyad})
+personel.update({"yas": yas})
+personel.update({"cinsiyet": cinsiyet})
+
+print(personel)
+print(personel["ad"], " ", personel["soyad"])
+
+"""
+
+# SORU: Bir firmanın İnsan kaynakları,Bilgi İşlem ve
+# Muhasebe departmanlarının çalışan listelerini yöneticiden
+# isteyerek bir dict atınız
+# ve ekrana istenilen bölümdeki çalışanları listeyiniz.
+
+"""
+IK = list()
+IT = list()
+MHSB = list()
+firma = dict()
+
+for i in range(1):
+    IK.append(input("İnsan Kaynakları Personel Ad Soyad"))
+    IT.append(input("Bilgi İşlem Personel Ad Soyad"))
+    MHSB.append(input("Muhasabe Personel Ad Soyad"))
+
+
+firma.update({"IK": IK})
+firma.update({"IT": IT})
+firma.update({"MHSB": MHSB})
+
+
+secim =  input("Lütfen personel listesine erişmek isteğiniz departmanın kodunu giriniz(IT,IK,MHSB)")
+
+for i in firma[secim]:
+    print(i)
+    
+"""
+
+"""
+yasakli_liste = ["ı", "ş", "ğ", "ö", "ü", "ç", "İ", "Ş", "Ğ", "Ö", "Ü", "Ç"]
+uygun_liste = ["i", "s", "g", "o", "u", "c", "I", "S", "G", "O", "U", "C"]
+
+metin = input("Test için küçük harflerden oluşan ve türkçe karakterler içeren bir metin girin: ")
+
+for i in metin:
+    if i in yasakli_liste:
+        indx = yasakli_liste.index(i)
+        krkt = uygun_liste[indx]
+        metin = metin.replace(i, krkt)
+
+print(metin)
+
+"""
+"""
+# SORU: sözlük uygulaması olsun Tr-Eng
+#       sözlük={"siyah":"black"...}
+#       kullanıcı 4 seçenekli bir menü verelim
+#          1-Arama
+           2-Çıkarma
+           3-Listeleme
+           4-Çıkış
+        Kullanıcı 1'e basarsa ->
+            - Aranacak kelimeyi giriniz:
+            - Bu kelime dict varsa english karşılığını yazılır.
+            - Yoksa uygulamayı geliştirmek istermisiniz?
+                - E ise bu kelimenin ingilizce karşılığını alırız ve sözlüğe eklenir.
+                - H ise Peki.. 
+        Kullanıcı 2'e basarsa -> 
+            - Çıkarılmak istenen kelime:
+            - Kelime sözlükte varsa çıkartılır.
+            - Yoksa uyarı verilir.
+        Kullanıcı 3'e basarsa ->
+            - Tum key value lar listenilir.
+            - KEY -> VALUE
+        Kullanıcı 4'e basarsa ->
+            - Döngü sonlanır..
+"""
