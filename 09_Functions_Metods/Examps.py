@@ -235,7 +235,7 @@ print(pascal_triangle(6))
 
 """
 
-
+"""
 # Kendisine parametre olarak gönderilen sayıya kadar olan sayıların karelerini
 # liste olarak dönen fonk. yaz.
 
@@ -247,3 +247,396 @@ def pow_list_test(n: int):
     return pow_list
 
 print(pow_list_test(100))
+
+"""
+
+"""
+def kare_al(x: int):
+    return x ** 2
+
+sonuc = kare_al(5)
+print(sonuc)
+
+sonuc = (lambda x: x ** 2)(5)
+print(sonuc)
+
+kare_al = lambda x: x ** 2
+
+print(kare_al(8))
+"""
+
+"""
+def hesapla(number: int):
+    return lambda x: x * number
+
+sonuc =  hesapla(5)(2)
+print(sonuc)
+"""
+"""
+# map(func, iter1) şeklinde kullanılır.
+# Yani elinizdeki bir fonksiyona, elinizdeki
+# bir datanın elemanlarını sırasıyla gönderir
+# ve sonucu tek bir obje olarak geri döner.
+# Ben aşağıdaki örneklerde hep liste kullandım
+# iterasyona sokulabileceği için ama veri tipi
+# liste olmak zorunda değil demet v.s. de olabilirdi.
+# Döngü içine alınabilen bir data olması yeterli.
+
+sayi_listesi = [2, 3, 4]
+
+
+def kare_al(sayi: int):
+    return sayi ** 2
+
+sonuc = list(map(kare_al, sayi_listesi))
+print(sonuc)
+
+sonuc2 = list(map(lambda x: x ** 2, sayi_listesi))
+print(sonuc2)
+"""
+
+"""
+
+#
+# Zip()
+# Kelimenin çevirisine baktığımızda zip,
+# fermuar anlamına geliyor ve tam olarak da
+# bu anlamda kullanılıyor. 2 listeyi birbiri indisleri üzerine
+# birleştiriyor. Bunu yaparken de en kısa elemanlı listenin
+# uzunluğunu baz alıyor.
+
+
+isim_listesi = ["AHMET", "MEHMET", "KENAN", "ALİ"]
+yas_listesi = [2, 3, 4]
+
+sonuc = zip(isim_listesi, yas_listesi)
+print(sonuc)
+
+sonuc2 = list(sonuc)
+print(sonuc2)
+
+print(type(sonuc2[0])) #sonuc tuple
+
+
+
+"""
+
+"""
+# Reduce()
+
+from functools import reduce
+
+numara_listesi = [1, 66, 99, 101, 333, 4454]
+
+
+def find_max(a: int, b: int):
+    if a > b:
+        return a
+    return b
+
+
+def find_min(a: int, b: int):
+    if a < b:
+        return a
+    return b
+
+
+sonuc = reduce(find_max, numara_listesi)
+print(sonuc)
+
+sonuc = reduce(find_min, numara_listesi)
+print(sonuc)
+"""
+
+"""
+# Filter()
+
+kisiler = ['Sinan', 'Erdinç', 'Mehmet']
+tarihler = [2018, 2017, 2020]
+ziplenmis = zip(kisiler,tarihler)
+
+sonuc =  list(filter(lambda eleman: 2018 <= eleman[1] <= 2020, ziplenmis))
+print(sonuc)
+
+list_number = [2, 4, 6, 8, 9, 10, 12, 13]
+
+cift_sayilar = list(filter(lambda x: (x % 2 == 0), list_number))
+print(cift_sayilar)
+
+filtrelenmis_liste = filter(lambda x: (x > 7) and (x < 10), list_number)
+print(list(filtrelenmis_liste))
+"""
+
+"""
+def kalin_yap(fn):
+    def wrapped():  # sarmallanmış fonksiyon
+        return "<b>" + fn() + "</b>"
+
+    return wrapped
+
+
+def alti_cizili(fn):
+    def wrapped():
+        return "<i>" + fn() + "</i>"
+
+    return wrapped
+
+
+@kalin_yap  # anatasyon -> decorator
+@alti_cizili
+def selam():
+    return "Merhaba"
+
+print(selam())
+
+
+
+def test(a):
+    def add(b):
+        nonlocal a
+        a += 1
+        return a + b
+
+    return add
+
+
+sonuc = test(4)
+print(sonuc(4))
+
+
+def abc():
+    x = 1
+    y = 2
+    str = "Test yazım"
+    print("Python fonksiyon")
+
+
+print(abc.__code__.co_nlocals)
+"""
+"""
+from  time import sleep
+
+sleep(1)
+print("Selam")
+sleep(5)
+print("Selam")
+"""
+"""
+
+def islem(a: int):
+    return a + 15
+
+
+islem2 = lambda a: a + 15
+print(islem2(5))
+
+
+def islem_3(x, y):
+    return x * y
+
+
+islem4 = lambda x, y: x * y
+print(islem4(10, 20))
+
+
+def us_al(taban: int, us: int):
+    return taban ** us
+
+
+islem5 = lambda taban, us: taban ** us
+print(islem5(2, 3))
+
+"""
+"""
+# Liste deki elemanları küçükten büyüğe notuna göre sıralayın
+sonuclar = [("Matematik", 90), ("Türkçe", 70), ("Fizik", 95), ("Kimya", 65)]
+print(sonuclar)
+
+sonuclar.sort(key=lambda x: x[1])  # Küçükten büyüğe göre sıralar
+sonuclar.sort(key=lambda x: x[1], reverse=True)  # Büyükten küçüğe göre sıralar
+print(sonuclar)
+"""
+"""
+# Listedeki telefonlar marka isimlerine göre a-z ye sıralansın
+telefonlar = [
+    {"marka": "Samsung", "model": "S3", "renk": "mavi"},
+    {"marka": "Apple", "model": "11", "renk": "kırmızı"},
+    {"marka": "Xioami", "model": "xx", "renk": "mor"},
+    {"marka": "Realme", "model": "abc", "renk": "turuncu"},
+]
+print(telefonlar)
+
+telefonlar.sort(key= lambda x: x["marka"])
+print(telefonlar)
+
+telefonlar.sort(key= lambda x: x["marka"], reverse=True)
+print(telefonlar)
+
+modeller = sorted(telefonlar, key=lambda x: x["marka"])
+print(modeller)
+"""
+"""
+# tek ve çift sayıları ayrı ayrı listeye atan lambda fn-nk.
+nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+cift_sayilar = list(filter(lambda x: x % 2 == 0, nums))
+tek_sayilar = list(filter(lambda x: x % 2 != 0, nums))
+
+print(cift_sayilar)
+print(tek_sayilar)
+"""
+
+"""
+# ile_basliyor lamda fonksiyonum girmiş oldğum kelimenin
+# P ile başlayıp başlamadığını mantıksal olarak döndürsün(True,False)
+ile_basliyor = lambda x: True if x.startswith("P") else False
+
+print(ile_basliyor("Python"))
+print(ile_basliyor("Java"))
+"""
+"""
+# Bu günün yılını ayını gününü saatini dakikasını saniyesini dönderen
+# lambda ifadelerini yazın.
+from datetime import datetime
+
+now = datetime.now()
+print(now)
+
+year = lambda x: x.year
+month = lambda x: x.month
+day = lambda x: x.day
+
+hour = lambda x: x.hour
+minute = lambda x: x.minute
+sec = lambda x: x.second
+
+print(year(now))
+print(month(now))
+print(day(now))
+print(hour(now))
+print(minute(now))
+print(sec(now))
+
+"""
+
+"""
+# İki listedeki elamanları karşılaştırarak farklı olan elemanları listeleyen progr. yaz.
+list1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+list2 = [2, 4, 6, 8]
+
+
+def fark_bul(list1: list, list2: list):
+    fark = list(filter(lambda x: x not in list2, list1))
+    return fark
+
+
+print("Orjinal Liste")
+print(list1)
+print(list2)
+
+print("Fark Listesi")
+print(fark_bul(list1, list2))
+
+"""
+"""
+# Elimizde colors = ["red", "black", "white", "green", "orange"] listesi var
+# Bu liste içindeki elemanlardan ack içeren elemanları bulan fonk.yaz.
+
+
+def bul(text: str):
+    if "ahmet" in text:
+        print("Ahmet yazının içinde")
+
+bul("Merhaba ahmet")
+
+
+
+def find_string(text: list, find_text: str):
+    result = list(filter(lambda x: find_text in x, text))
+    return result
+
+
+colors = ["red", "black", "white", "green", "orange"]
+print("Orjinal Liste")
+print(colors)
+
+aranacak = input("ARanacak kelimeyi gir")
+print("Kelime aranıyor...")
+print(find_string(colors, aranacak))
+"""
+
+"""
+# İki adet listemiz var birinci listede bulunan elemanlar ikinci listede de vardır
+# bu ikinci listede bulunan elemanları liste1 e göre karşılaştırıp
+# aynı olanları veren fonk. yaz
+
+def fark_bul(l1: list, l2: list):
+    result = [list(filter(lambda x: x in l1, sublist)) for sublist in l2]
+    return result
+
+
+liste1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+liste2 = [[12, 18, 23, 25, 45], [7, 11, 19, 24, 28], [1, 5, 8, 18, 15, 16]]
+#  12, 7, 11, 1, 5,8
+
+print(fark_bul(liste1, liste2))
+"""
+
+"""
+# Elimdeki listeyi tersten yazdıran lambda ifadesini yazınız..
+
+def reverse_string_on_list(list1: list):
+    result = list(map(lambda x: "".join(reversed(x)), list1))
+    return result
+
+
+color_list = ["Red", "Pink", "Yellow", "Orange", "Hue"]
+
+print(reverse_string_on_list(color_list))
+"""
+
+# ÖDEV
+# Elimdeki listede tekrar eden değerleri silen ve birbiri ile çarpan fonk. yazın.
+# Lambda ifadesi ile de yazın
+"""
+
+# Listedeki elemanları birbiri ile çarpan lambda fonk. yazın
+# reduce kullanın
+
+from functools import reduce
+
+
+def multiple_list(list1: list):
+    result = reduce(lambda x, y: x * y, list1)
+    return result
+
+
+num_list = [4, 3, 2, 1, -1, 5, -5]
+
+print(multiple_list(num_list))
+"""
+
+"""
+# Elimizdeki tuple bulunan string olarak tanımlanmış değerleri int e çeviren
+# lambda ifadesini yazın.
+def tuple_to_int(tup1: tuple):
+    result = tuple(map(lambda x: (int(x[0]), int(x[2])), tup1))
+    return result
+
+
+num_tuple = (("233", "ABC", "33"), ("1453", "mayıs", "29"), ("1923", "ekim", "29"), ("1920", "nisan", "23"))
+
+print(tuple_to_int(num_tuple))
+"""
+
+
+# Elimdeki listede None değeri olmadan listeyi yeniden yazan fonk. yaz.
+
+def remove_none(list1: list):
+    result = filter(lambda y: y is not None, list1)
+    return list(result)
+
+
+nums = [12, 0, None, 23, None, -55, 234, 89, None, 0, 6, -12]
+
+print(remove_none(nums))
