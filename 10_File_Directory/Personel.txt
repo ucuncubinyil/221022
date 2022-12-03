@@ -1,0 +1,2 @@
+####################PERSONEL BİLGLERİ####################
+AD: A      SOYAD: A      DOĞUM YILI: A
