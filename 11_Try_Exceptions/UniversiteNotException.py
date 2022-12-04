@@ -1,0 +1,2 @@
+class UniversiteNotException(Exception):
+    pass

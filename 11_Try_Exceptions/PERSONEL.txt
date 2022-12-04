@@ -1,0 +1,4 @@
+####################PERSONEL BİLGLERİ####################
+AD: ali      SOYAD: Veli      DOĞUM YILI: 1993
+AD: Kerem      SOYAD: CAn      DOĞUM YILI: 2002
+AD: Ufuk      SOYAD: Kuzgun      DOĞUM YILI: 2007
