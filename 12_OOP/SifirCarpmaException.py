@@ -1,0 +1,2 @@
+class SifirCarpmaException(BaseException):
+    pass
