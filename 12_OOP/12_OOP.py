@@ -162,11 +162,45 @@ carpma2 = Matematik.carp(1, 9)
 print(carpma2)
 
 """
-
+"""
 from Personel import Personel
 
 personel1 = Personel()
 
-personel1.kaydet()
+# personel1.kaydet()
 
 Personel.listele()
+
+"""
+"""
+Soru Otomobil sınıfı 
+- Marka Model  Renk Motor Hacmi Üretim Yılı
+- Özellikler(Fields) __init__ metoduda parametre olarak alınsın
+- Kaydet Metodu Otomobil.txt dosyasına kaydetsin kayıt dosyası OTO_BU_GUNUN_TARIHI.txt
+- __init__ metodu kaydet metodunu çağırsın
+"""
+
+from Otomobil import Otomobil
+
+ford = Otomobil("Ford", "Kargo", "Fıstık Yeşili", "1200HP", "2022")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
